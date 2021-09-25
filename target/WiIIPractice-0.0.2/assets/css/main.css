@@ -22,6 +22,24 @@
 }
 
 
+/*/////////////////////////////////////////////////////////
+[TABLES]*/
+
+.table {
+    border-bottom: #3c32cf 3px solid;
+    border-right: #3c32cf 3px solid;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.table td,
+.table th {
+    border: #3c32cf 3px solid;
+    max-width: 125px;
+    word-wrap: break-word;
+}
+
+
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
 
@@ -274,9 +292,15 @@ iframe {
     background: #f2f2f2;
 }
 
+@media (max-width: 400px) {
+    .wrap-login3 {
+        width: 300px;
+    }
+}
+
 .wrap-login3 {
     min-height: fit-content;
-    width: 300px;
+    width: 390px;
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
@@ -476,7 +500,7 @@ iframe {
     margin: 0 auto;
 }
 
-.login3-form-bgbtn {
+.login3-form-bgbtn3 {
     position: absolute;
     z-index: -1;
     width: 300%;
@@ -494,17 +518,63 @@ iframe {
     transition: all 0.4s;
 }
 
+.login3-form-rev-bgbtn3 {
+    position: absolute;
+    z-index: -1;
+    width: 300%;
+    height: 100%;
+    background: #a64bf4;
+    background: -webkit-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    background: -o-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    background: -moz-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    background: linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    top: 0;
+    right: -100%;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.table-back {
+    position: absolute;
+    z-index: -1;
+    width: 300%;
+    height: 100%;
+    background: #a64bf4;
+    background: -webkit-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    background: -o-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    background: -moz-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    background: linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    right: 0;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.navbar-collapse {
+    margin-bottom: 1vh;
+    margin-top: 1vh;
+}
+
+.MakingTable {
+    z-index: 4;
+}
+
 
 /* .collapse navbar-collapse show {} */
 
 .content {
     margin-top: 50px;
+    min-width: 150px;
 }
 
 .nav-home3 {
     position: absolute;
     z-index: 1;
     min-height: 10vh;
+    min-width: 150px;
     width: 100%;
     background: #a64bf4;
     background: -webkit-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
@@ -537,6 +607,11 @@ iframe {
 
 .navbar-expand-sm {
     margin-bottom: 10px;
+}
+
+.btn-group {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
 }
 
 .navbar-collapse {
@@ -597,11 +672,11 @@ iframe {
     height: 50px;
 }
 
-.wrap-home3-form-btn:hover .login3-form-bgbtn {
-    left: 0;
+.wrap-home3-form-rev-btn3:hover .home3-form-rev-bgbtn {
+    right: 100%;
 }
 
-.wrap-login3-form-btn:hover .login3-form-bgbtn {
+.wrap-login3-form-btn3:hover .login3-form-bgbtn {
     left: 0;
 }
 
@@ -621,8 +696,45 @@ iframe {
 
 .container-home3 {
     width: 100%;
-    margin-top: 20vh;
+    margin-top: 30vh;
     min-height: 20vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background: #f2f2f2;
+}
+
+.container-home3-buttons {
+    width: 100%;
+    margin-top: 10vh;
+    border-top: 10vh;
+    min-height: 10vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background: #f2f2f2;
+}
+
+.btn-group-12 {
+    margin-top: 45px;
+}
+
+.container-home3-new {
+    margin-top: 30vh;
+    width: 100%;
+    min-height: 10vh;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -645,10 +757,58 @@ iframe {
     margin: 0 auto;
 }
 
-.home3-form-bgbtn {
+.wrap-home3-form-btn3 {
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.wrap-home3-form-rev-btn3 {
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.wrap-home3-form-btn3:hover .home3-form-bgbtn {
+    left: 0;
+}
+
+.wrap-home3-form-rev-btn3:hover .home3-form-rev-bgbtn {
+    right: -100%;
+}
+
+.home3-form-rev-bgbtn:hover {
+    right: -100%;
+}
+
+.home3-form-rev-bgbtn {
     position: absolute;
     z-index: -1;
     width: 300%;
+    height: 100%;
+    background: #a64bf4;
+    background: -webkit-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    background: -o-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    background: -moz-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    background: linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    top: 0;
+    right: 0;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.home3-form-bgbtn {
+    position: absolute;
+    z-index: -1;
+    width: 200%;
     height: 100%;
     background: #a64bf4;
     background: -webkit-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
@@ -681,8 +841,48 @@ iframe {
     height: 50px;
 }
 
+.home3-form-btn3 {
+    font-family: Poppins-Medium;
+    font-size: 20px;
+    color: #fff;
+    line-height: 1.2;
+    text-transform: uppercase;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+    height: 50px;
+}
+
+.home3-form-rev-btn3 {
+    font-family: Poppins-Medium;
+    font-size: 20px;
+    color: #fff;
+    line-height: 1.2;
+    text-transform: uppercase;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+    height: 50px;
+}
+
 .wrap-home3-form-btn:hover .home3-form-bgbtn {
     left: 0;
+}
+
+.wrap-home3-form-rev-btn3:hover .home3-form-bgbtn {
+    right: -100%;
 }
 
 

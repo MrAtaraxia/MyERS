@@ -17,7 +17,7 @@
     <title>home Page</title>
 </head>
 
-<body>
+<body onload="onLoad()">
     <!--onload="onLoad()"-->
     <nav class="navbar navbar-expand-sm navbar-light bg-light nav-home3 mb-4">
         <div class="container-fluid">
@@ -54,7 +54,7 @@
         <div class="limiter" id="limiter-home3">
 
             <div class="container-home3-buttons ">
-                <div class="btn-group col-12" role="group" aria-label="Basic example">
+                <div class="btn-group btn-group-12 col-12" role="group" aria-label="Basic example">
 
                     <div class="wrap-home3-form-btn3 container-home3-buttons" style="border-top-left-radius: 25px; border-bottom-left-radius: 25px;">
 
@@ -83,50 +83,55 @@
                 </div>
             </div>
             <div class="container-home3-new Pending" id="Pending" style="display: none;">
+                <div class="row">
+                    <div class="ftable-back col-12">
+                        <center>
+                            PENDING
+                        </center>
+                        <table class="table table-striped table-hover border border-4 t-main-3 t-pending" id="t-pending">
 
-                <div class="ftable-back ">
-                    PENDING
-                    <table class="table table-striped table-hover border border-4 t-main-3 t-pending" id="t-pending">
-
-                        <thead class="t-header-3">
-                            <tr>
-                                <td id="colID">ID</td>
-                                <td id="colAMOU">AMOUNT</td>
-                                <td id="colTYPE">TYPE</td>
-                                <td id="colDESC">DESCRIPTION</td>
-                                <td id="colRECE">RECEIPT</td>
-                                <td id="colAUTH">AUTHOR</td>
-                                <td id="colSTAT">STATUS</td>
-                                <td id="colSUBM">SUBMITTED</td>
-                                <td id="colRESR">RESLOVER</td>
-                                <td id="colRESD">RESOLVED</td>
-                                <td id="colAPPR">A</td>
-                                <td id="colDENY">D</td>
-                            </tr>
-                        </thead>
-                        <tbody class="t-b-pen" id="t-b-pen">
-                            <tr>
-                                <td id="colID">1</td>
-                                <td id="colAMOU">1</td>
-                                <td id="colTYPE">1</td>
-                                <td id="colDESC">1</td>
-                                <td id="colRECE">1</td>
-                                <td id="colAUTH">1</td>
-                                <td id="colSTAT">1</td>
-                                <td id="colSUBM">1</td>
-                                <td id="colRESR">1</td>
-                                <td id="colRESD">1</td>
-                                <td id="colAPPR"><button onclick="console.log('Approve')">A</button></td>
-                                <td id="colDENY"><button onclick="console.log('Deny')">D</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                            <thead class="t-header-3">
+                                <tr>
+                                    <td id="colID">ID</td>
+                                    <td id="colAMOU">AMOUNT</td>
+                                    <td id="colTYPE">TYPE</td>
+                                    <td id="colDESC">DESCRIPTION</td>
+                                    <td id="colRECE">RECEIPT</td>
+                                    <td id="colAUTH">BY</td>
+                                    <td id="colSTAT">STATUS</td>
+                                    <td id="colSUBM">SUBMITTED</td>
+                                    <td id="colRESR">RESLOVER</td>
+                                    <td id="colRESD">RESOLVED</td>
+                                    <td id="colAPPR">A</td>
+                                    <td id="colDENY">D</td>
+                                </tr>
+                            </thead>
+                            <tbody class="t-b-pen" id="t-b-pen">
+                                <tr>
+                                    <td id="colID">1</td>
+                                    <td id="colAMOU">1</td>
+                                    <td id="colTYPE">1</td>
+                                    <td id="colDESC">1</td>
+                                    <td id="colRECE">1</td>
+                                    <td id="colAUTH">1</td>
+                                    <td id="colSTAT">1</td>
+                                    <td id="colSUBM">1</td>
+                                    <td id="colRESR">1</td>
+                                    <td id="colRESD">1</td>
+                                    <td id="colAPPR"><button onclick="console.log('Approve')">A</button></td>
+                                    <td id="colDENY"><button onclick="console.log('Deny')">D</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <div class="container-home3-new Resolved" id="Resolved" style="display: none;">
 
                 <div class="ftable-back ">
-                    RESOLVED
+                    <center>
+                        RESOLVED
+                    </center>
                     <table class="table table-striped table-hover border border-4 t-main-3 t-resolved" id="t-resolved">
 
                         <thead class="t-header-3">
@@ -136,7 +141,7 @@
                                 <td id="colTYPE">TYPE</td>
                                 <td id="colDESC">DESCRIPTION</td>
                                 <td id="colRECE">RECEIPT</td>
-                                <td id="colAUTH">AUTHOR</td>
+                                <td id="colAUTH">BY</td>
                                 <td id="colSTAT">STATUS</td>
                                 <td id="colSUBM">SUBMITTED</td>
                                 <td id="colRESR">RESLOVER</td>
@@ -153,7 +158,9 @@
             <div class="container-home3-new CreateNew" id="CreateNew" style="display: none;">
 
                 <div class="ftable-back ">
-                    CreateNew
+                    <center>
+                        CreateNew
+                    </center>
                     <table class="table table-striped table-hover border border-4 t-main-3 t-pending" id="t-pending">
                     </table>
                 </div>
@@ -169,13 +176,260 @@
     <script src="assets/js/main.js "></script>
     <!--<script src='assets/js/home.js'></script>-->
     <script>
+        var Pending;
+        var Resolved;
+        var VPe = -1;
+        var VRe = -1;
+
+        function showPending() {
+            toggleEles();
+            document.getElementById("Pending").style.display = "block";
+            document.getElementById("Resolved").style.display = "none";
+        }
+
+        function showResolved() {
+            toggleEles();
+            document.getElementById("Pending").style.display = "none";
+            document.getElementById("Resolved").style.display = "block";
+
+        }
+
+
+        function fetchResolved() {
+            $.ajax({
+                url: "GetReimbursments",
+                //type: 'GET',
+                type: "POST",
+                data: {
+                    name: "Resolved",
+                    version: VPe
+                },
+                cache: false,
+                dataType: 'json',
+                success: function(result) {
+                    //  alert(jQuery.dataType);
+                    if (result) {
+                        let currRes = 0;
+                        let tempResult = 0;
+                        let keepGoing = false;
+                        if (VRe <= result[0]) {
+                            VRe = result[0];
+                            keepGoing = true;
+                        }
+                        if (keepGoing) {
+                            result = result[1];
+                            result = JSON.parse(result);
+                            console.log("FETCHING:" + result);
+                            console.log("VPE:" + VPe);
+                            console.log(VPe + ":" + result);
+                            //result.result[1];
+                            var tblBody = document.getElementsByClassName("t-b-pen")[0];
+                            //var dd = JSON.parse(result);
+                            for (let i in result) {
+                                //if (i.length > 1) {
+                                console.log("RESULTS:" + result[i]);
+                                let ID = "";
+                                let AMOUNT = "";
+                                let RECEIPT = "";
+                                let AUTHOR = "";
+                                let RESLOVER = "";
+                                let DESCRIPTION = "";
+                                let RESOLVED = "";
+                                let STATUS = "";
+                                let SUBMITTED = "";
+                                let TYPE = "";
+                                for (var j in result[i]) {
+                                    if (j === "ID") {
+                                        ID = result[i][j] + "id";
+                                    }
+                                    if (j === "AMOUNT") {
+                                        AMOUNT = result[i][j];
+                                    }
+                                    if (j === "RECEIPT") {
+                                        RECEIPT = result[i][j];
+                                    }
+                                    if (j === "AUTHOR") {
+                                        AUTHOR = result[i][j];
+                                    }
+                                    if (j === "DESCRIPTION") {
+                                        DESCRIPTION = result[i][j];
+                                    }
+                                    if (j === "RESLOVER") {
+                                        RESLOVER = result[i][j];
+                                    }
+                                    if (j === "RESOLVED") {
+                                        RESOLVED = result[i][j];
+                                    }
+                                    if (j === "STATUS") {
+                                        STATUS = result[i][j];
+                                    }
+                                    if (j === "SUBMITTED") {
+                                        SUBMITTED = result[i][j];
+                                    }
+                                    if (j === "TYPE") {
+                                        TYPE = result[i][j];
+                                    }
+                                    if (j.length > 1) {
+                                        console.log("" + j + ":" + result[i][j]);
+                                    }
+                                }
+
+
+                                // <td id="colSUBM">SUBMITTED</td>
+                                // <td id="colRESR">RESLOVER</td>
+                                // <td id="colRESD">RESOLVED</td>
+                                // <td id="colAPPR">A</td>
+                                // <td id="colDENY">D</td>
+                                let myArray = [ID, AMOUNT, TYPE, DESCRIPTION, RECEIPT, AUTHOR, STATUS, SUBMITTED, RESLOVER, RESOLVED, "AP", "DE"];
+                                let myArray2 = ["colID", "colAMOU", "colTYPE", "colDESC", "colRECE", "colAUTH", "colSTAT", "colSUBM", "colRESR", "colRESD", "colAPPR", "colDENY"]; {
+                                    let row = document.createElement("tr");
+                                    for (let k = 0; k < myArray.length; k++) {
+
+                                        let cell = document.createElement("td");
+                                        cell.setAttribute('id', myArray2[k]);
+                                        console.log("FROM ARRAY" + myArray[k]);
+                                        var cellText = document.createTextNode(myArray[k]);
+                                        cell.appendChild(cellText);
+                                        row.appendChild(cell);
+                                    }
+                                    tblBody.appendChild(row);
+                                }
+                            }
+                        }
+                        alert(result);
+                        toggleEles();
+                    }
+                },
+                error: function() {
+                    alert("No");
+                }
+            });
+        }
+
+        function fetchPending() {
+            $.ajax({
+                url: "GetReimbursments",
+                //type: 'GET',
+                type: "POST",
+                data: {
+                    name: "Pending",
+                    version: VPe
+                },
+                cache: false,
+                dataType: 'json',
+                success: function(result) {
+                    //  alert(jQuery.dataType);
+                    if (result) {
+                        let currRes = 0;
+                        let tempResult = 0;
+                        let keepGoing = false;
+                        if (VPe <= result[0]) {
+                            VPe = result[0];
+                            keepGoing = true;
+                        }
+                        if (keepGoing) {
+                            result = result[1];
+                            result = JSON.parse(result);
+                            console.log("FETCHING:" + result);
+                            console.log("VPE:" + VPe);
+                            console.log(VPe + ":" + result);
+                            //result.result[1];
+                            var tblBody = document.getElementsByClassName("t-b-pen")[0];
+                            //var dd = JSON.parse(result);
+                            for (let i in result) {
+                                //if (i.length > 1) {
+                                console.log("RESULTS:" + result[1][i]);
+                                let ID = "";
+                                let AMOUNT = "";
+                                let RECEIPT = "";
+                                let AUTHOR = "";
+                                let DESCRIPTION = "";
+                                let RESLOVER = "";
+                                let RESOLVED = "";
+                                let STATUS = "";
+                                let SUBMITTED = "";
+                                let TYPE = "";
+                                for (var j in result[i]) {
+                                    console.log("INNER" + i + "k:v" + result[i][j]);
+                                    if (j === "ID") {
+                                        ID = result[i][j] + "id";
+                                    }
+                                    if (j === "AMOUNT") {
+                                        AMOUNT = result[i][j];
+                                    }
+                                    if (j === "RECEIPT") {
+                                        RECEIPT = result[i][j];
+                                    }
+                                    if (j === "AUTHOR") {
+                                        AUTHOR = result[i][j];
+                                    }
+                                    if (j === "DESCRIPTION") {
+                                        DESCRIPTION = result[i][j];
+                                    }
+                                    if (j === "RESLOVER") {
+                                        RESLOVER = "-";
+                                    }
+                                    if (j === "RESOLVED") {
+                                        RESOLVED = "-";
+                                    }
+                                    if (j === "STATUS") {
+                                        STATUS = result[i][j];
+                                    }
+                                    if (j === "SUBMITTED") {
+                                        SUBMITTED = result[i][j];
+                                    }
+                                    if (j === "TYPE") {
+                                        TYPE = result[i][j];
+                                    }
+                                    if (j.length > 1) {
+                                        console.log("" + j + ":" + result[i][j]);
+                                    }
+                                }
+                                let myArray = [ID, AMOUNT, TYPE, DESCRIPTION, RECEIPT, AUTHOR, STATUS, SUBMITTED, RESLOVER, RESOLVED, "AP", "DE"];
+                                let myArray2 = ["colID", "colAMOU", "colTYPE", "colDESC", "colRECE", "colAUTH", "colSTAT", "colSUBM", "colRESR", "colRESD", "colAPPR", "colDENY"]; {
+                                    let row = document.createElement("tr");
+                                    for (let k = 0; k < myArray.length; k++) {
+
+                                        let cell = document.createElement("td");
+                                        cell.setAttribute('id', myArray2[k]);
+                                        console.log("FROM ARRAY" + myArray[k]);
+                                        var cellText = document.createTextNode(myArray[k]);
+                                        cell.appendChild(cellText);
+                                        row.appendChild(cell);
+                                    }
+                                    tblBody.appendChild(row);
+                                }
+                            }
+                        }
+                        alert(result);
+                        toggleEles();
+                    }
+
+                },
+                error: function() {
+                    alert("No");
+                }
+            });
+        }
+
+        function fetchBoth() {
+            fetchPending();
+            fetchResolved();
+            toggleEles();
+        }
+
         function onLoad() {
-            if (!sessionStorage.user) {
-                logout();
+            function fetchBoth() {
+                fetchPending();
+                fetchResolved();
+                toggleEles();
             }
-            document.getElementById("empname").innerHTML = sessionStorage.user;
-            document.getElementById("empmail").innerHTML = sessionStorage.email;
-            document.getElementById("toReplace").innerHTML = sessionStorage.table;
+            // if (!sessionStorage.user) {
+            //     logout();
+            // }
+            // document.getElementById("empname").innerHTML = sessionStorage.user;
+            // document.getElementById("empmail").innerHTML = sessionStorage.email;
+            // document.getElementById("toReplace").innerHTML = sessionStorage.table;
         }
 
         function logout() {
