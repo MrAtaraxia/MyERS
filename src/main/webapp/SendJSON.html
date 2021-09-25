@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Title</title>
+</head>
+
+<body>
+    Hello World.
+    <!--<form action="add" method="get">-->
+    <button onclick="myFunction()">a</button>
+    <script>
+        let User = class {
+            constructor(id, fname, lname) {
+                this.id = id;
+                this.fname = fname;
+                this.lname = lname;
+            }
+        }
+
+        let bob = new User(1, "abc", "def");
+        //$.post("test.php", { json_string:JSON.stringify({name:"John", time:"2pm"}) });
+        function myFunction() {
+        	let json_upload = JSON.stringify(bob);
+        	let xmlhttp = new XMLHttpRequest(); // new HttpRequest instance 
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+                    //alert(xmlhttp.responseText);
+                    //var body = document.getElementsByTagName("table")[0];
+                    //if(body.get)
+                    tbody = document.getElementsByTagName("tbody");
+                    //if(tbody.))
+                }
+            }
+            xmlhttp.open("POST", "GetJSON");
+            //xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xmlhttp.send(json_upload);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favorite Icon-->
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon.ico" />
+
+    <title>Title</title>
+</head>
+
+<body>
+    <div class="btn-group btn-group-lg" role="group" aroa=labels="...">
+        <button type="button" class="btn btn-default" onclick="showPending()">Pending</button>
+        <button type="button" class="btn btn-default" onclick="showResolved()">Resolved</button>
+    </div>
+    <div class="Resolved" id="Resolved" style="display: none;">
+        Resolved!
+        <table class="t-resolved" id="t-resolved" style="border: 2">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>AMOUNT</td>
+                    <td>TYPE</td>
+                    <td>DESCRIPTION</td>
+                    <td>RECEIPT</td>
+                    <td>AUTHOR</td>
+                    <td>STATUS</td>
+                    <td>SUBMITTED</td>
+                    <td>RESLOVER</td>
+                    <td>RESOLVED</td>
+                </tr>
+            </thead>
+            <tbody class="t-b-res" id="t-b-res">
+            </tbody>
+        </table>
+        <div id="res-Practice"></div>
+    </div>
+    <div class="Pending" id="Pending" style="display: none;">
+        Pending!
+        <table class="t-pending" id="t-pending">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>AMOUNT</td>
+                    <td>TYPE</td>
+                    <td>DESCRIPTION</td>
+                    <td>RECEIPT</td>
+                    <td>AUTHOR</td>
+                    <td>STATUS</td>
+                    <td>SUBMITTED</td>
+                    <td>RESLOVER</td>
+                    <td>RESOLVED</td>
+                </tr>
+            </thead>
+            <tbody class="t-b-pen" id="t-b-pen">
+            </tbody>
+        </table>
+    </div>
+    <button onclick="fetchBoth()">a</button>
+
+
+
+
+    <script>
+        var Pending;
+        var Resolved;
+        var VPe = -1;
+        var VRe = -1;
+
+
+
+        function showPending() {
+            document.getElementById("Pending").style.display = "block";
+            document.getElementById("Resolved").style.display = "none";
+        }
+
+        function showResolved() {
+            document.getElementById("Pending").style.display = "none";
+            document.getElementById("Resolved").style.display = "block";
+        }
+
+        // function fetchResolved() {
+        //     let json_upload = JSON.stringify({
+        //         "data": "ToSend"
+        //     });
+        //     let req = new XMLHttpRequest(); // new HttpRequest instance 
+        //     req.req = 'json';
+        //     req.onreadystatechange = function() {
+        //         if (req.readyState == XMLHttpRequest.DONE) {
+        //             //Resolved = req.responseText;
+        //             Resolved = req.response;
+        //             console.log(Resolved);
+        //             //let jsonResol = JSON.parse(Resolved);
+        //             //jsonResol = JSON.parse(Resolved);
+        //             jsonResol = Resolved;
+        //             alert("RESOLVED" + jsonResol + "-----" + Resolved);
+        //             document.getElementById("res-Practice").innerHTML = Resolved;
+        //             for (var i = 0; i < jsonResol.length; i++) {
+        //                 var obj = jsonResol[i];
+        //                 console.log(obj + "-i-" + i);
+        //                 for (let j in obj.jsonData) {
+        //                     console.log(obj[j] + "-KAY-" + k);
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     req.open("GET", "GetResolved");
+        //     req.send("Resolved");
+        // }
+
+        var thing = 5;
+
+        function fetchResolved() {
+            $.ajax({
+                url: "GetReimbursments",
+                //type: 'GET',
+                type: "POST",
+                data: {
+                    name: "Resolved",
+                    version: VPe
+                },
+                cache: false,
+                dataType: 'json',
+                success: function(result) {
+                    //  alert(jQuery.dataType);
+                    if (result) {
+                        let currRes = 0;
+                        let tempResult = 0;
+                        let keepGoing = false;
+						if(VRe > result[0]){
+                        	VRe = result[0];
+                        	keepGoing = true;
+						}
+						if(keepGoing){
+	                        result = result[1];
+	                        result = JSON.parse(result);
+	                        console.log("FETCHING:" + result);
+	                        console.log("VPE:" + VPe);
+	                        console.log(VPe + ":" + result);
+	                        //result.result[1];
+	                        var tblBody = document.getElementsByClassName("t-b-pen")[0];
+	                        //var dd = JSON.parse(result);
+	                        for (let i in result) {
+	                            //if (i.length > 1) {
+	                            console.log("RESULTS:" + result[i]);
+	                            let ID = "";
+	                            let AMOUNT = "";
+	                            let RECEIPT = "";
+	                            let AUTHOR = "";
+	                            let RESLOVER = "";
+	                            let DESCRIPTION = "";
+	                            let RESOLVED = "";
+	                            let STATUS = "";
+	                            let SUBMITTED = "";
+	                            let TYPE = "";
+	                            for (var j in result[i]) {
+	                                if (j === "ID") {
+	                                    ID = result[i][j] + "id";
+	                                }
+	                                if (j === "AMOUNT") {
+	                                    AMOUNT = result[i][j];
+	                                }
+	                                if (j === "RECEIPT") {
+	                                    RECEIPT = result[i][j];
+	                                }
+	                                if (j === "AUTHOR") {
+	                                    AUTHOR = result[i][j];
+	                                }
+	                                if (j === "DESCRIPTION") {
+	                                    DESCRIPTION = result[i][j];
+	                                    console.log("Description");
+	                                }
+	                                if (j === "RESLOVER") {
+	                                    RESLOVER = result[i][j];
+	                                }
+	                                if (j === "RESOLVED") {
+	                                    RESOLVED = result[i][j];
+	                                }
+	                                if (j === "STATUS") {
+	                                    STATUS = result[i][j];
+	                                }
+	                                if (j === "SUBMITTED") {
+	                                    SUBMITTED = result[i][j];
+	                                }
+	                                if (j === "TYPE") {
+	                                    TYPE = result[i][j];
+	                                }
+	                                if (j.length > 1) {
+	                                    console.log("" + j + ":" + result[i][j]);
+	                                }
+	                            }
+	                            let myArray = [ID, AMOUNT, TYPE, DESCRIPTION, RECEIPT, AUTHOR, STATUS, SUBMITTED, RESLOVER, RESOLVED]; {
+	                                let row = document.createElement("tr");
+	                                for (let k = 0; k < myArray.length; k++) {
+	
+	                                    let cell = document.createElement("td");
+	                                    console.log("FROM ARRAY" + myArray[k]);
+	                                    var cellText = document.createTextNode(myArray[k]);
+	                                    cell.appendChild(cellText);
+	                                    row.appendChild(cell);
+	                                }
+	                                tblBody.appendChild(row);
+	                            }
+                            }
+                        }
+                        alert(result)
+                    }
+                },
+                error: function() {
+                    alert("No");
+                }
+            });
+        }
+
+        function fetchPending() {
+            $.ajax({
+                url: "GetReimbursments",
+                //type: 'GET',
+                type: "POST",
+                data: {
+                    name: "Pending",
+                    version: VPe
+                },
+                cache: false,
+                dataType: 'json',
+                success: function(result) {
+                    //  alert(jQuery.dataType);
+                    if (result) {
+                        let currRes = 0;
+                        let tempResult = 0;
+                        let keepGoing = false;
+						if(VPe > result[0]){
+                        	VPe = result[0];
+                        	keepGoing = true;
+						}
+						if(keepGoing){
+	                        result = result[1];
+	                        result = JSON.parse(result);
+	                        console.log("FETCHING:" + result);
+	                        console.log("VPE:" + VPe);
+	                        console.log(VPe + ":" + result);
+	                        //result.result[1];
+	                        var tblBody = document.getElementsByClassName("t-b-pen")[0];
+	                        //var dd = JSON.parse(result);
+	                        for (let i in result) {
+	                            //if (i.length > 1) {
+	                            console.log("RESULTS:" + result[1][i]);
+	                            let ID = "";
+	                            let AMOUNT = "";
+	                            let RECEIPT = "";
+	                            let AUTHOR = "";
+	                            let DESCRIPTION = "";
+	                            let RESLOVER = "";
+	                            let RESOLVED = "";
+	                            let STATUS = "";
+	                            let SUBMITTED = "";
+	                            let TYPE = "";
+	                            for (var j in result[i]) {
+	                                console.log("INNER" + i + "k:v" + result[i][j]);
+	                                if (j === "ID") {
+	                                    ID = result[i][j] + "id";
+	                                }
+	                                if (j === "AMOUNT") {
+	                                    AMOUNT = result[i][j];
+	                                }
+	                                if (j === "RECEIPT") {
+	                                    RECEIPT = result[i][j];
+	                                }
+	                                if (j === "AUTHOR") {
+	                                    AUTHOR = result[i][j];
+	                                }
+	                                if (j === "DESCRIPTION") {
+	                                    DESCRIPTION = result[i][j];
+	                                }
+	                                if (j === "RESLOVER") {
+	                                    RESLOVER = "-";
+	                                }
+	                                if (j === "RESOLVED") {
+	                                    RESOLVED = "-";
+	                                }
+	                                if (j === "STATUS") {
+	                                    STATUS = result[i][j];
+	                                }
+	                                if (j === "SUBMITTED") {
+	                                    SUBMITTED = result[i][j];
+	                                }
+	                                if (j === "TYPE") {
+	                                    TYPE = result[i][j];
+	                                }
+	                                if (j.length > 1) {
+	                                    console.log("" + j + ":" + result[i][j]);
+	                                }
+	                            }
+	                            let myArray = [ID, AMOUNT, TYPE, DESCRIPTION, RECEIPT, AUTHOR, STATUS, SUBMITTED, RESLOVER, RESOLVED]; {
+	                                let row = document.createElement("tr");
+	                                for (let k = 0; k < myArray.length; k++) {
+	
+	                                    let cell = document.createElement("td");
+	                                    console.log("FROM ARRAYInd" + k + ":ELEMENT" + myArray[k]);
+	                                    var cellText = document.createTextNode(myArray[k]);
+	                                    cell.appendChild(cellText);
+	                                    row.appendChild(cell);
+	                                }
+	                                tblBody.appendChild(row);
+	                            }
+                        	}
+                        }
+                        alert(result)
+                    }
+
+                },
+                error: function() {
+                    alert("No");
+                }
+            });
+        }
+
+        // function fetchPending() {
+        //     let json_upload = JSON.stringify({
+        //         "data": "ToSend"
+        //     });
+        //     let req = new XMLHttpRequest(); // new HttpRequest instance 
+        //     req.req = 'json';
+        //     req.onreadystatechange = function() {
+        //         if (req.readyState == XMLHttpRequest.DONE) {
+        //             //Pending = req.responseText;
+        //             Pending = req.response;
+        //             console.log(Pending);
+        //             let jsonPend = JSON.parse(Pending);
+        //             alert("PENDING" + jsonPend + "-----" + Pending);
+        //             alert("PENDIng again" + reimb_TYPE.reimb_TYPE);
+        //             let tr = document.createElement('tr');
+        //             let c1 = document.createElement('td').innerHTML = "a";
+        //             tr.appendChild(c1);
+        //             tr.appendChild(document.createElement('td').innerHTML = "2");
+        //             tr.appendChild(document.createElement('td').innerHTML = "3");
+        //             tr.appendChild(document.createElement('td').innerHTML = "4");
+        //             tr.appendChild(document.createElement('td').innerHTML = "5");
+        //             tr.appendChild(document.createElement('td').innerHTML = "6");
+        //             document.getElementById("t-b-pen").appendChild(tr);
+        //             for (let a in jsonPend) {
+        //                 console.log(a + "-PENDING-" + a.REIMB_ID);
+        //                 for (let b in a) {
+        //                     console.log("BBBB" + b);
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     req.open("GET", "GetPending");
+        //     req.send("Pending");
+        // }
+
+
+        // const myRequest = new Request('products.json');
+        // function fetchResolved(myRequest){
+        // fetch(myRequest)
+        //     .then(function(response) {
+        //         return response.json();
+        //     })
+        //     .then(function(jsonResponse) {
+        //         // do something with jsonResponse
+        //     });
+        // }
+        // fetchPending(GetPending)
+        //     .then(function(response) {
+        //         return response.json();
+        //     })
+        //     .then(function(jsonResponse) {
+        //         // do something with jsonResponse
+        //     });
+
+        function fetchBoth() {
+            fetchPending();
+            fetchResolved();
+        }
+    </script>
+    <!-- JQuery;  -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js "></script>
+    <!-- Bootstrap JS;  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js " integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ " crossorigin="anonymous "></script>
+
+    <script src="assets/js/main.js "></script>
+    <!--<script src='assets/js/home.js'></script>-->
+</body>
+
+</html>

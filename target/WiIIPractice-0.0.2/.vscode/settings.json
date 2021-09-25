@@ -1,0 +1,27 @@
+{
+    "terminal.integrated.automationShell.windows": "C:\\Program Files\\Git\\git-cmd.exe",
+    "terminal.integrated.automationShellArgs.windows": [
+        "--command=usr/bin/bash.exe",
+        "-l",
+        "-i"
+      ],
+      "terminal.integrated.profiles.windows": {
+
+        "PowerShell": {
+          "source": "PowerShell",
+          "icon": "terminal-powershell"
+        },
+        "Command Prompt": {
+          "path": [
+            "${env:windir}\\Sysnative\\cmd.exe",
+            "${env:windir}\\System32\\cmd.exe"
+          ],
+          "args": [],
+          "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+          "path": ["C:\\Programs\\Git\\git-bash.exe"],
+          "icon": "terminal-bash"
+        }
+      }
+}

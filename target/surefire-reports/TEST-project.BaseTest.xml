@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="1" failures="0" name="project.BaseTest" time="0.005" errors="0" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="sun.boot.library.path" value="E:\Programs\Java\JDK\openJDK\jdk-8\jre\bin"/>
+    <property name="java.vm.version" value="25.71-b10"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="E:\Code\Java\workA\WiIIPractice"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="E:\Code\Java\workA\WiIIPractice"/>
+    <property name="java.runtime.version" value="1.8.0-262-b10"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="E:\Programs\Java\JDK\openJDK\jdk-8\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\w3\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="classworlds.conf" value="E:\Code\Java\workA\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf4648429981069702527.tmp"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="E:\Programs\Java\JDK\openJDK\jdk-8\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;E:\Programs\Java\JDK\openJDK\jdk-8\jre\bin;C:/Programs/eclipse/eclipse//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.2.v20210721-1149/jre/bin/server;C:/Programs/eclipse/eclipse//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.2.v20210721-1149/jre/bin;E:\Programs\Oracle\dbhomeXE\bin;E:\Programs\Python\Python38\Scripts\;E:\Programs\Python\Python38\;C:\Program Files\Microsoft MPI\Bin\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Azure Data Studio\bin;&quot;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin&quot;;C:\Programs\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Programs\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\w3\AppData\Local\Microsoft\WindowsApps;C:\Users\w3\.dotnet\tools;C:\Program Files\Azure Data Studio\bin;E:\Programs\Microsoft VS Code\bin;E:\Programs\Marven\apache-maven-3.8.1\bin;E:\Programs\Java\JDK\openJDK\jdk-11;C:\Programs\hadoop\bin;C:\Programs\Spark\spark-3.1.2-bin-hadoop3.2\bin;E:\Programs\Selenium\Firefox\geckodriver;C:\Programs\Git\bin;E:\Programs\Java\JDK\openJDK\jdk-11\bin;E:\Users\w3\AppData\Roaming\npm;C:\Programs\eclipse\eclipse;;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\w3"/>
+    <property name="user.timezone" value="America/New_York"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="user.name" value="w3"/>
+    <property name="java.class.path" value="C:\Programs\eclipse\eclipse\plugins\org.eclipse.m2e.maven.runtime_1.18.0.20210618-2246\jars\plexus-classworlds-2.6.0.jar;C:\Programs\eclipse\eclipse\configuration\org.eclipse.osgi\415\0\.cp\lib\javaagent-shaded.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="E:\Programs\Java\JDK\openJDK\jdk-8\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B clean validate verify test install compile dependency:copy-dependencies package"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0-262"/>
+    <property name="java.ext.dirs" value="E:\Programs\Java\JDK\openJDK\jdk-8\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="E:\Programs\Java\JDK\openJDK\jdk-8\jre\lib\resources.jar;E:\Programs\Java\JDK\openJDK\jdk-8\jre\lib\rt.jar;E:\Programs\Java\JDK\openJDK\jdk-8\jre\lib\sunrsasign.jar;E:\Programs\Java\JDK\openJDK\jdk-8\jre\lib\jsse.jar;E:\Programs\Java\JDK\openJDK\jdk-8\jre\lib\jce.jar;E:\Programs\Java\JDK\openJDK\jdk-8\jre\lib\charsets.jar;E:\Programs\Java\JDK\openJDK\jdk-8\jre\lib\jfr.jar;E:\Programs\Java\JDK\openJDK\jdk-8\jre\classes"/>
+    <property name="java.vendor" value="OpenLogic-OpenJDK"/>
+    <property name="maven.home" value="E:\Code\Java\workA\WiIIPractice\EMBEDDED"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase classname="project.BaseTest" name="myTest" time="0.005"/>
+</testsuite>
