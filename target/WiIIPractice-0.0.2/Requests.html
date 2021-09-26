@@ -17,7 +17,7 @@
     <title>home Page</title>
 </head>
 
-<body onload="onLoad()">
+<body>
     <!--onload="onLoad()"-->
     <nav class="navbar navbar-expand-sm navbar-light bg-light nav-home3 mb-4">
         <div class="container-fluid">
@@ -110,6 +110,18 @@
                             </thead>
                             <tbody class="t-b-pen" id="t-b-pen">
                                 <tr>
+                                    <td id="colID">1</td>
+                                    <td id="colAMOU">1</td>
+                                    <td id="colTYPE">1</td>
+                                    <td id="colDESC">1</td>
+                                    <td id="colRECE">1</td>
+                                    <td id="colAUTH">1</td>
+                                    <td id="colSTAT">1</td>
+                                    <td id="colSUBM">1</td>
+                                    <td id="colRESR">1</td>
+                                    <td id="colRESD">1</td>
+                                    <td id="colAPPR"><button onclick="console.log('Approve')">A</button></td>
+                                    <td id="colDENY"><button onclick="console.log('Deny')">D</button></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -201,10 +213,10 @@
                         let currRes = 0;
                         let tempResult = 0;
                         let keepGoing = false;
-                        //if (VRe <= result[0]) {
-                        VRe = result[0];
-                        keepGoing = true;
-                        //}
+                        if (VRe <= result[0]) {
+                            VRe = result[0];
+                            keepGoing = true;
+                        }
                         if (keepGoing) {
                             result = result[1];
                             result = JSON.parse(result);
@@ -316,10 +328,10 @@
                         let currRes = 0;
                         let tempResult = 0;
                         let keepGoing = false;
-                        //if (VRe <= result[0]) {
-                        VRe = result[0];
-                        keepGoing = true;
-                        //}
+                        if (VPe <= result[0]) {
+                            VPe = result[0];
+                            keepGoing = true;
+                        }
                         if (keepGoing) {
                             result = result[1];
                             result = JSON.parse(result);
@@ -494,10 +506,10 @@
             fetchPending();
             setTimeout(() => {
                 fetchResolved();
-            }, 2000);
+            }, 4000);
             setTimeout(() => {
                 toggleEles();
-            }, 4000);
+            }, 8000);
         }
 
         function onLoad() {
@@ -552,6 +564,19 @@
             toggleEles();
         });
 
+        function approval(RID, bool) {
+            let xhttp = new XMLHttpRequest();
+            var params = "rid=" + RID + "&actiontype=" + bool + "&approver=" + sessionStorage.id;
+            xhttp.onreadystatechange = function() {
+                console.log(this.readyState);
+                if (this.readyState === 4 && this.status === 200) {
+                    alert("Completed");
+                }
+            };
+            xhttp.open("GET", "Manage" + "?" + params, true);
+            xhttp.send();
+
+        }
     </script>
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js " integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN " crossorigin="anonymous "></script>

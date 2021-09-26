@@ -28,13 +28,13 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link active txt3" aria-current="page" href="ViewRequests.html">Requests</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link txt3" href="ApproveDeny.html">Approve/Deny</a>
+                        <a class="nav-link txt3" href="Requests.html">Requests</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link txt3" href="ViewEmployees.html">View Employees</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link txt3 active txt3" aria-current="page" href="CreateEmployee.html">Create Employee</a>
                     </li>
                     <li class="nav-item">
                     </li>
@@ -101,10 +101,10 @@
             var x = document.getElementById("navbarCollapse");
             if (x.className === "collapse navbar-collapse") {
                 x.className += " show";
-                document.getElementById("limiter-home3").style.marginTop = "30vh";
+                document.getElementById("limiter-home3").style.marginTop = "60vh";
             } else {
                 x.className = "collapse navbar-collapse";
-                document.getElementById("limiter-home3").style.marginTop = "";
+                document.getElementById("limiter-home3").style.marginTop = "10vh";
             }
         }
 

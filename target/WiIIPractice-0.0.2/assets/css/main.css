@@ -30,6 +30,8 @@
     border-right: #3c32cf 3px solid;
     border-collapse: collapse;
     text-align: center;
+    width: 300px;
+    display: block
 }
 
 .table td,
@@ -37,6 +39,9 @@
     border: #3c32cf 3px solid;
     max-width: 125px;
     word-wrap: break-word;
+    height: 50px;
+    display: block;
+    overflow: scroll
 }
 
 
@@ -566,7 +571,7 @@ iframe {
 /* .collapse navbar-collapse show {} */
 
 .content {
-    margin-top: 50px;
+    padding-top: 50px;
     min-width: 150px;
 }
 
@@ -696,7 +701,7 @@ iframe {
 
 .container-home3 {
     width: 100%;
-    margin-top: 30vh;
+    padding-top: 20vh;
     min-height: 20vh;
     display: -webkit-box;
     display: -webkit-flex;
