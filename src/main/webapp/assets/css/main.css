@@ -30,6 +30,8 @@
     border-right: #3c32cf 3px solid;
     border-collapse: collapse;
     text-align: center;
+    width: 300px;
+    display: block
 }
 
 .table td,
@@ -37,6 +39,9 @@
     border: #3c32cf 3px solid;
     max-width: 125px;
     word-wrap: break-word;
+    height: 50px;
+    display: block;
+    overflow: scroll
 }
 
 

@@ -55,7 +55,7 @@
             <div class="container-login3">
                 <div class="wrap-login3">
                     <div>
-                        <form class="home3-form validate-form" enctype="multipart/form-data">
+                        <form class="home3-form validate-form" enctype="multipart/form-data" id="formElem">
                             <!--Later POST-->
                             <div style="margin-bottom: 5vh !important;">
                                 <span class="home3-form-title p-b-46">
@@ -65,29 +65,29 @@
 						        <i class=" zmdi zmdi-font"></i>
 					        </span>
                             <div class="wrap-input3 validate-input" data-validate="Username">
-                                <input class="input3" type="text" id="Username" name="Username">
+                                <input class="input3" type="text" id="form-user" name="Username">
                                 <span class="focus-input3" data-placeholder="Username"></span>
                             </div>
                             <div class="wrap-input3 validate-input" data-validate="Password">
-                                <input class="input3" type="text" id="Password" name="Password">
+                                <input class="input3" type="text" id="form-pass" name="Password">
                                 <span class="focus-input3" data-placeholder="Password"></span>
                             </div>
                             <div class="wrap-input3 validate-input" data-validate="First Name">
-                                <input class="input3" type="text" id="FirstName" name="FirstName">
+                                <input class="input3" type="text" id="form-first" name="FirstName">
                                 <span class="focus-input3" data-placeholder="First Name"></span>
                             </div>
                             <div class="wrap-input3 validate-input" data-validate="Last Name">
-                                <input class="input3" type="text" id="LastName" name="LastName">
+                                <input class="input3" type="text" id="form-last" name="LastName">
                                 <span class="focus-input3" data-placeholder="Last Name"></span>
                             </div>
                             <div class="wrap-input3 validate-input" data-validate="Email">
-                                <input class="input3" type="text" id="Email" name="Email">
+                                <input class="input3" type="text" id="form-email" name="Email">
                                 <span class="focus-input3" data-placeholder="Email"></span>
                             </div>
                             <div class="container-home3-form-btn">
                                 <div class="wrap-home3-form-btn">
                                     <div class="home3-form-bgbtn"></div>
-                                    <button class="home3-form-btn" onclick="console.log('button')">Update Information</button>
+                                    <button class="home3-form-btn" onclick="updateUser()">Update Information</button>
                                 </div>
                             </div>
                         </form>
@@ -98,8 +98,7 @@
     </div>
 
 
-    <div id="dropDownSelect1"></div>
-
+    <!--<div id="dropDownSelect1"></div>-->
 
 
 
@@ -112,36 +111,78 @@
     <script src="assets/js/main.js"></script>
     <!--<script src='assets/js/home.js'></script>-->
     <script>
-        //var formData = new FormData(document.querySelector('form'));
-        //formData.set("Username","uname");
-        //formData.set("Password","pass");
+        $('form').submit(false);
 
-        function autoFill() {
-            document.getElementById('Username').value = "Value1";
-            document.getElementById('Password').value = "Value2";
+        function loadEmployee() {
+            console.log("LOAD EMPLOYEE");
+            $.ajax({
+                url: "GetUsers",
+                type: "POST",
+                data: {
+                    name: "Get",
+                    version: "0",
+                    choice: 0
+                },
+                cache: false,
+                dataType: 'json',
+                success: function(result) {
+                    $(document).ready(function() {
+                        $("#form-user").val(result.USERNAME);
+                        $("#form-user").addClass('has-val');
+                        $("#form-pass").val(result.PASSWORD);
+                        $("#form-pass").addClass('has-val');
+                        $("#form-first").val(result.FNAME);
+                        $("#form-first").addClass('has-val');
+                        $("#form-last").val(result.LNAME);
+                        $("#form-last").addClass('has-val');
+                        $("#form-email").val(result.EMAIL);
+                        $("#form-email").addClass('has-val');
+                    });
+                    $('form').submit(false);
+                    //alert(result);
+                },
+                error: function() {
+                    alert("An error occured when approving the employee. Please try again later.");
+                }
+            });
         }
 
         function onLoad() {
-            // if (!sessionStorage.user) {
-            //     logout();
-            // }
-            // document.getElementById("empname").innerHTML = sessionStorage.user;
-            // document.getElementById("empmail").innerHTML = sessionStorage.email;
-            // document.getElementById("toReplace").innerHTML = sessionStorage.table;
+            console.log("LOADING on LOAD");
+            loadEmployee();
         }
+        // if (!sessionStorage.user) {
+        //     logout();
+        // }
+        // document.getElementById("empname").innerHTML = sessionStorage.user;
+        // document.getElementById("empmail").innerHTML = sessionStorage.email;
+        // document.getElementById("toReplace").innerHTML = sessionStorage.table;
 
-        $(document).ready(function() {
-            $("#Username").val("Boss");
-            $("#Username").addClass('has-val');
-            $("#Password").val("Pass");
-            $("#Password").addClass('has-val');
-            $("#FirstName").val("Joe");
-            $("#FirstName").addClass('has-val');
-            $("#LastName").val("Bean");
-            $("#LastName").addClass('has-val');
-            $("#Email").val("em@il");
-            $("#Email").addClass('has-val');
-        });
+
+        function updateUser() {
+            $.ajax({
+                url: "GetUsers",
+                type: "POST",
+                data: {
+                    name: "Update",
+                    version: "0",
+                    choice: 0,
+                    Username: document.getElementById("form-user").value,
+                    Password: document.getElementById("form-pass").value,
+                    FirstName: document.getElementById("form-first").value,
+                    LastName: document.getElementById("form-last").value,
+                    Email: document.getElementById("form-email").value,
+                },
+                cache: false,
+                dataType: 'json',
+                success: function(result) {
+                    alert(result);
+                },
+                error: function() {
+                    alert("An error occured when approving the employee. Please try again later.");
+                }
+            });
+        }
 
         function logout() {
             sessionStorage.removeItem("user");

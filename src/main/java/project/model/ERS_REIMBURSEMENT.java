@@ -52,7 +52,7 @@ public class ERS_REIMBURSEMENT implements Serializable{
 
 	@Id
 	@Column(name="REIMB_ID", unique = true, nullable = false)
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int REIMB_ID;
 	
 	@Column(name="REIMB_AMOUNT", unique = false, nullable = false)
@@ -68,7 +68,6 @@ public class ERS_REIMBURSEMENT implements Serializable{
 	@Column(name = "REIMB_RESOLVED", nullable = true)
 	private Date REIMB_RESOLVED;
 	
-	
 	@Column(name="REIMB_DESCRIPTION", unique = false, nullable = false, length = 250)
 	private String REIMB_DESCRIPTION;
 	
@@ -76,17 +75,17 @@ public class ERS_REIMBURSEMENT implements Serializable{
 	private String REIMB_RECEIPT;
 	
 	@JoinColumn(name = "REIMB_AUTHOR_ID")
-	@ManyToOne(targetEntity = ERS_USERS.class, fetch = FetchType.LAZY)
+	@ManyToOne(targetEntity = ERS_USERS.class, fetch = FetchType.EAGER)
 	private ERS_USERS REIMB_AUTHOR;
 
 	@Column(name = "REIMB_AUTHOR_ID", insertable = false, updatable = false)
 	private int REIMB_AUTHOR_ID;
 	
 	@JoinColumn(name="REIMB_RESLOVER_ID", unique = false, nullable = true)
-	@ManyToOne(targetEntity = ERS_USERS.class, fetch = FetchType.LAZY)
+	@ManyToOne(targetEntity = ERS_USERS.class, fetch = FetchType.EAGER)
 	private ERS_USERS REIMB_RESLOVER;
 
-	@Column(name = "REIMB_AUTHOR_ID", insertable = false, updatable = false)
+	@Column(name = "REIMB_RESLOVER_ID", insertable = false, updatable = false)
 	private Integer REIMB_RESLOVER_ID;
 
 	@Enumerated(value = EnumType.STRING)
@@ -185,7 +184,7 @@ public class ERS_REIMBURSEMENT implements Serializable{
 	}
 
 	public void setREIMB_RESLOVER(ERS_USERS REIMB_RESLOVER) {
-		this.REIMB_AUTHOR = REIMB_RESLOVER;
+		this.REIMB_RESLOVER = REIMB_RESLOVER;
 	}
 
 	public REIMBURSEMENT_STATUS getREIMB_STATUS() {

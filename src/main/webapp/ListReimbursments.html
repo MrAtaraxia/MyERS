@@ -69,7 +69,7 @@
                         <div class="wrap-home2-form-btn ">
                             <div class="home3-form-rev-bgbtn">
                             </div>
-                            <button type="button" class="btn home3-form-rev-btn3" onclick="fetchBoth()">Submit</button>
+                            <button type="button" class="btn home3-form-rev-btn3" onclick="fetchBoth()">Update</button>
                         </div>
                     </div>
 
@@ -136,18 +136,16 @@
 
                         <thead class="t-header-3">
                             <tr>
-                                <td id="colID">ID</td>
-                                <td id="colAMOU">AMOUNT</td>
-                                <td id="colTYPE">TYPE</td>
-                                <td id="colDESC">DESCRIPTION</td>
-                                <td id="colRECE">RECEIPT</td>
-                                <td id="colAUTH">BY</td>
-                                <td id="colSTAT">STATUS</td>
-                                <td id="colSUBM">SUBMITTED</td>
-                                <td id="colRESR">RESLOVER</td>
-                                <td id="colRESD">RESOLVED</td>
-                                <td id="colAPPR">A</td>
-                                <td id="colDENY">D</td>
+                                <td id="RcolID">ID</td>
+                                <td id="RcolAMOU">AMOUNT</td>
+                                <td id="RcolTYPE">TYPE</td>
+                                <td id="RcolDESC">DESCRIPTION</td>
+                                <td id="RcolRECE">RECEIPT</td>
+                                <td id="RcolAUTH">BY</td>
+                                <td id="RcolSTAT">STATUS</td>
+                                <td id="RcolSUBM">SUBMITTED</td>
+                                <td id="RcolRESR">RESLOVER</td>
+                                <td id="RcolRESD">RESOLVED</td>
                             </tr>
                         </thead>
                         <tbody class="t-b-res" id="t-b-res">
@@ -202,7 +200,8 @@
                 type: "POST",
                 data: {
                     name: "Resolved",
-                    version: VPe
+                    version: VPe,
+                    choice: "1"
                 },
                 cache: false,
                 dataType: 'json',
@@ -223,24 +222,27 @@
                             console.log("VPE:" + VPe);
                             console.log(VPe + ":" + result);
                             //result.result[1];
-                            var tblBody = document.getElementsByClassName("t-b-pen")[0];
+                            var tblBody = document.getElementsByClassName("t-b-res")[0];
+                            while (tblBody.firstChild) {
+                                tblBody.removeChild(tblBody.firstChild);
+                            }
                             //var dd = JSON.parse(result);
                             for (let i in result) {
                                 //if (i.length > 1) {
-                                console.log("RESULTS:" + result[i]);
+                                //console.log("RESULTS:" + result[i]);
                                 let ID = "";
                                 let AMOUNT = "";
                                 let RECEIPT = "";
                                 let AUTHOR = "";
-                                let RESLOVER = "";
                                 let DESCRIPTION = "";
+                                let RESLOVER = "";
                                 let RESOLVED = "";
                                 let STATUS = "";
                                 let SUBMITTED = "";
                                 let TYPE = "";
                                 for (var j in result[i]) {
                                     if (j === "ID") {
-                                        ID = result[i][j] + "id";
+                                        ID = result[i][j];
                                     }
                                     if (j === "AMOUNT") {
                                         AMOUNT = result[i][j];
@@ -280,8 +282,8 @@
                                 // <td id="colRESD">RESOLVED</td>
                                 // <td id="colAPPR">A</td>
                                 // <td id="colDENY">D</td>
-                                let myArray = [ID, AMOUNT, TYPE, DESCRIPTION, RECEIPT, AUTHOR, STATUS, SUBMITTED, RESLOVER, RESOLVED, "AP", "DE"];
-                                let myArray2 = ["colID", "colAMOU", "colTYPE", "colDESC", "colRECE", "colAUTH", "colSTAT", "colSUBM", "colRESR", "colRESD", "colAPPR", "colDENY"]; {
+                                let myArray = [ID, AMOUNT, TYPE, DESCRIPTION, RECEIPT, AUTHOR, STATUS, SUBMITTED, RESLOVER, RESOLVED];
+                                let myArray2 = ["RcolID", "RcolAMOU", "RcolTYPE", "RcolDESC", "RcolRECE", "RcolAUTH", "RcolSTAT", "RcolSUBM", "RcolRESR", "RcolRESD"]; {
                                     let row = document.createElement("tr");
                                     for (let k = 0; k < myArray.length; k++) {
 
@@ -296,12 +298,12 @@
                                 }
                             }
                         }
-                        alert(result);
+                        //alert(result);
                         toggleEles();
                     }
                 },
                 error: function() {
-                    alert("No");
+                    alert("An error occured when attempting to update your reiimbursments list. Please try again later.");
                 }
             });
         }
@@ -313,7 +315,8 @@
                 type: "POST",
                 data: {
                     name: "Pending",
-                    version: VPe
+                    version: VPe,
+                    choice: "1"
                 },
                 cache: false,
                 dataType: 'json',
@@ -335,6 +338,9 @@
                             console.log(VPe + ":" + result);
                             //result.result[1];
                             var tblBody = document.getElementsByClassName("t-b-pen")[0];
+                            while (tblBody.firstChild) {
+                                tblBody.removeChild(tblBody.firstChild);
+                            }
                             //var dd = JSON.parse(result);
                             for (let i in result) {
                                 //if (i.length > 1) {
@@ -352,7 +358,7 @@
                                 for (var j in result[i]) {
                                     console.log("INNER" + i + "k:v" + result[i][j]);
                                     if (j === "ID") {
-                                        ID = result[i][j] + "id";
+                                        ID = result[i][j];
                                     }
                                     if (j === "AMOUNT") {
                                         AMOUNT = result[i][j];
@@ -385,45 +391,127 @@
                                         console.log("" + j + ":" + result[i][j]);
                                     }
                                 }
-                                let myArray = [ID, AMOUNT, TYPE, DESCRIPTION, RECEIPT, AUTHOR, STATUS, SUBMITTED, RESLOVER, RESOLVED, "AP", "DE"];
+                                let myArray = [ID, AMOUNT, TYPE, DESCRIPTION, RECEIPT, AUTHOR, STATUS, SUBMITTED, RESLOVER, RESOLVED, "APPROVE", "DENY"];
                                 let myArray2 = ["colID", "colAMOU", "colTYPE", "colDESC", "colRECE", "colAUTH", "colSTAT", "colSUBM", "colRESR", "colRESD", "colAPPR", "colDENY"]; {
                                     let row = document.createElement("tr");
                                     for (let k = 0; k < myArray.length; k++) {
-
-                                        let cell = document.createElement("td");
-                                        cell.setAttribute('id', myArray2[k]);
-                                        console.log("FROM ARRAY" + myArray[k]);
-                                        var cellText = document.createTextNode(myArray[k]);
-                                        cell.appendChild(cellText);
-                                        row.appendChild(cell);
+                                        if (myArray[k] === "APPROVE") {
+                                            let cell = document.createElement("td");
+                                            cell.setAttribute('id', myArray2[k]);
+                                            console.log("FROM ARRAY" + myArray[k]);
+                                            let aButton = document.createElement("button");
+                                            aButton.setAttribute('onclick', 'approveEmployee(\'' +
+                                                myArray[0] +
+                                                '\')');
+                                            let aImg = document.createElement("img");
+                                            aImg.setAttribute('src', 'assets/img/Approve1.png');
+                                            aImg.setAttribute('alt', 'approve');
+                                            aImg.setAttribute('width', '30px');
+                                            aImg.setAttribute('height', '30px');
+                                            aButton.appendChild(aImg);
+                                            cell.appendChild(aButton);
+                                            row.appendChild(cell);
+                                            //<button onclick=\"approveEmployee()\"><img src='assets/img/Approve1.png' alt='approve' width=\"30\" height=\"30\"></button>
+                                        } else if (myArray[k] === "DENY") {
+                                            let cell = document.createElement("td");
+                                            cell.setAttribute('id', myArray2[k]);
+                                            console.log("FROM ARRAY" + myArray[k]);
+                                            let aButton = document.createElement("button");
+                                            aButton.setAttribute('onclick', 'denyEmployee(\'' +
+                                                myArray[0] +
+                                                '\')');
+                                            let aImg = document.createElement("img");
+                                            aImg.setAttribute('src', 'assets/img/Deny1.png');
+                                            aImg.setAttribute('alt', 'deny');
+                                            aImg.setAttribute('width', '30px');
+                                            aImg.setAttribute('height', '30px');
+                                            aButton.appendChild(aImg);
+                                            cell.appendChild(aButton);
+                                            row.appendChild(cell);
+                                        } else {
+                                            let cell = document.createElement("td");
+                                            cell.setAttribute('id', myArray2[k]);
+                                            console.log("FROM ARRAY" + myArray[k]);
+                                            var cellText = document.createTextNode(myArray[k]);
+                                            cell.appendChild(cellText);
+                                            row.appendChild(cell);
+                                        }
                                     }
                                     tblBody.appendChild(row);
                                 }
                             }
                         }
-                        alert(result);
+                        //alert(result);
                         toggleEles();
                     }
 
                 },
                 error: function() {
-                    alert("No");
+                    alert("An error occured when attempting to update your reiimbursments list. Please try again later.");
+                }
+            });
+        }
+
+        function approveEmployee(aaa) {
+            console.log("APPROVING:" + aaa);
+            $.ajax({
+                url: "GetReimbursments",
+                type: "POST",
+                data: {
+                    name: "Approve",
+                    version: "1",
+                    choice: aaa
+                },
+                cache: false,
+                dataType: 'json',
+                success: function(result) {
+                    //  alert(jQuery.dataType);
+                    fetchBoth();
+                    alert(result);
+                },
+                error: function() {
+                    alert("An error occured when approving the employee. Please try again later.");
+                }
+            });
+        }
+
+        function denyEmployee(aaa) {
+            console.log("DENYING:" + aaa);
+            $.ajax({
+                url: "GetReimbursments",
+                type: "POST",
+                data: {
+                    name: "Deny",
+                    version: "1",
+                    choice: aaa
+                },
+                cache: false,
+                dataType: 'json',
+                success: function(result) {
+                    //  alert(jQuery.dataType);
+                    fetchBoth();
+                    alert(result);
+                },
+                error: function() {
+                    alert("An error occured when denying the employee. Please try again later.");
                 }
             });
         }
 
         function fetchBoth() {
+            //Make something that prevents them from spamming this,
+            //or that at least prevents it from reaching the server.
             fetchPending();
-            fetchResolved();
-            toggleEles();
+            setTimeout(() => {
+                fetchResolved();
+            }, 4000);
+            setTimeout(() => {
+                toggleEles();
+            }, 8000);
         }
 
         function onLoad() {
-            function fetchBoth() {
-                fetchPending();
-                fetchResolved();
-                toggleEles();
-            }
+            fetchBoth();
             // if (!sessionStorage.user) {
             //     logout();
             // }
@@ -458,12 +546,16 @@
 
         function toggleEles() {
             $('#colID,#colDESC,#colRECE,#colSTAT,#colRESR,#colRESD,#colSUBM').hide();
+            $('#RcolID,#RcolDESC,#RcolRECE,#RcolRESD,#RcolSUBM').hide();
             if (width >= 900) {
                 $('#colDESC,#colSUBM,#colID,#colRECE').show();
+                $('#RcolDESC,#RcolRESD,#RcolID').show();
             } else {
                 $('#colDESC,#colSUBM,#colID,#colRECE').hide();
+                $('#RcolDESC,#RcolRESD,#RcolID').hide();
             }
             "# colAMOU, #colTYPE, #colAUTH, #colAPPR, #colDENY "
+            "#RcolRESR,#RcolSTAT,"
             // Write other conditions here..
         }
         $(window).resize(function() {

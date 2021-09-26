@@ -43,7 +43,7 @@ public class ERS_USERS implements Serializable{
 
 	@Id
 	@Column(name="ERS_USERS_ID")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer ERS_USERS_ID;
 	
 	@Column(name="ERS_USERNAME", unique=true, nullable=false, length = 50)

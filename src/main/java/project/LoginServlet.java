@@ -1,7 +1,7 @@
 package project;
 
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
+//import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +15,7 @@ public class LoginServlet extends HttpServlet {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -41015832632171351L;
+	private static final long serialVersionUID = 1L;
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -29,10 +29,15 @@ public class LoginServlet extends HttpServlet {
 		
 		if(result == true){
 			System.out.println("success");
-			request.getSession().setAttribute("user", username); 
+			request.getSession().setAttribute("username", username); 
+			request.getSession().setAttribute("user", LoginService.currentUser); 
 			request.getSession().setAttribute("userID", LoginService.currentUser.getERS_USERS_ID()); 
 			request.getSession().setAttribute("role", LoginService.currentUser.getUSER_ROLE());
 			//request.getSession().getAttribute("userID");
+			System.out.println("USER:"+request.getSession().getAttribute("user"));
+			System.out.println("username:"+request.getSession().getAttribute("username"));
+			System.out.println("userID:"+request.getSession().getAttribute("userID"));
+			System.out.println("role:"+request.getSession().getAttribute("role"));
 			if(role.toString().equals("EMPLOYEE")) {
 				response.sendRedirect("e-home.html");
 			} else if(role.toString().equals("MANAGER")) {
