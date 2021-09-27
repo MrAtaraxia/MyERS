@@ -18,12 +18,12 @@
     /*=====================================================
     [Opening Tray]*/
 
-    if ($(".navbarCollapse").hasClass("show")) {
-        // Open
-        alert("showing");
-    } else {
-        // Closed
-    }
+    // if ($(".navbarCollapse").hasClass("show")) {
+    //     // Open
+    //     alert("showing");
+    // } else {
+    //     // Closed
+    // }
 
     /*==================================================================
     [ Validate ]*/

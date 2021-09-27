@@ -14,7 +14,7 @@
     <!-- <link rel="stylesheet" type="text/css" href="assets/css/util.css"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-    <title>home Page</title>
+    <title>Account Information</title>
 </head>
 
 <body onload="onLoad()">
@@ -87,7 +87,7 @@
                             <div class="container-home3-form-btn">
                                 <div class="wrap-home3-form-btn">
                                     <div class="home3-form-bgbtn"></div>
-                                    <button class="home3-form-btn" onclick="updateUser()">Update Information</button>
+                                    <button class="home3-form-btn" onclick="onSubmit()">Update Information</button>
                                 </div>
                             </div>
                         </form>
@@ -111,6 +111,9 @@
     <script src="assets/js/main.js"></script>
     <!--<script src='assets/js/home.js'></script>-->
     <script>
+        function onSubmit() {
+            updateUser();
+        }
         $('form').submit(false);
 
         function loadEmployee() {

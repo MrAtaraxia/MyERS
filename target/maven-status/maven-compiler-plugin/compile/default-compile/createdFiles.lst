@@ -1,8 +1,10 @@
 project\dao\ERS_USERSDao.class
 project\LoginServlet.class
 project\getParts.class
+project\service\UserServices.class
 project\CreateWithServlet.class
 project\SquareServlet.class
+project\service\ReimbursementService.class
 project\model\ERS_USERS.class
 project\TestServletException.class
 project\User.class

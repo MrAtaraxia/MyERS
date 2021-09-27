@@ -40,20 +40,30 @@ public class SubmitServlet extends HttpServlet {
 		int userID =  (int) request.getSession().getAttribute("userID");
 	    /* Receive file uploaded to the Servlet from the HTML5 form */
 	    //Part filePart = request.getPart("file");
-	    String fileThing = request.getParameter("file");
+	    String fileThing = request.getParameter("fileInput");
 	    System.out.println("FIleThing:"+fileThing);
 	    //String aFile = filePart.getContentType();
+		String type =  request.getParameter("type");
+		if(type==null) {
+			type=request.getParameter("typeAgain");
+		}
 	    //String nFile = filePart.getSubmittedFileName();
 		//System.out.println("Name:"+nFile);
 		//System.out.println("ContentType:"+aFile);
 	    String contentType = "";
-	    Collection<Part> FileParts = request.getParts();
+	    Collection<Part> FileParts = null;
+	    try {
+	    	FileParts = request.getParts();
 	    for (Part part : FileParts) {
 	    	if(part.getSubmittedFileName() != null) {
 	    		contentType = part.getContentType();
 	    		System.out.println("CONTENT TYPE:" + contentType);
 	    		break;
 	    	}
+	    }
+	    }catch(Exception e) {
+	    	System.out.println(e);
+		    contentType = fileThing;
 	    }
 	    String ending = "";
 	    String min = Integer.toString(LocalDateTime.now().getMinute());
@@ -70,14 +80,29 @@ public class SubmitServlet extends HttpServlet {
 	    case"image/png":
 	    	ending="png";
 	    	break;
+	    case"image/webp":
+	    	ending="jpg";
+	    	break;
 	    case"pdf":
 	    	ending="pdf";
 	    	break;
 	    }
-	    for (Part part : FileParts) {
-	    	part.write("C:\\upload\\" + userID + fileName + "." + ending);
+	    if(FileParts!=null) {
+		    for (Part part : FileParts) {
+		    	part.write("C:\\upload\\" + userID + fileName + "." + ending);
+		    }
+	    } else {
+	    	System.out.println("DID NOT SAVE FILE!");
 	    }
-		String type =  request.getParameter("type");
+		if(type==null) {
+			type=request.getParameter("typeAgain");
+		}		
+		if(type==null) {
+			type=request.getParameter("type");
+		}
+		//System.out.println("B"+request.getParameter("typeInput"));
+	    //System.out.println("C"+request.getParameter("description"));
+	    //System.out.println("D"+request.getParameter("descriptionInput"));
 	    String description = request.getParameter("description");
 	    Double amount = Double.valueOf(request.getParameter("amount"));
 	    System.out.println("AMOUNT:"+amount);

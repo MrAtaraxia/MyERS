@@ -28,10 +28,10 @@
 .table {
     border-bottom: #3c32cf 3px solid;
     border-right: #3c32cf 3px solid;
-    border-collapse: collapse;
     text-align: center;
+    /*border-collapse: collapse;
     width: 300px;
-    display: block
+    /*display: block*/
 }
 
 .table td,
@@ -39,9 +39,9 @@
     border: #3c32cf 3px solid;
     max-width: 125px;
     word-wrap: break-word;
-    height: 50px;
-    display: block;
-    overflow: scroll
+    /*height: 50px;*/
+    /*display: block;*/
+    /*overflow: scroll*/
 }
 
 
@@ -374,8 +374,30 @@ iframe {
     padding: 0 5px;
 }
 
+.input2 {
+    font-family: Poppins-Regular;
+    font-size: 15px;
+    color: #555555;
+    line-height: 1.2;
+    display: block;
+    width: 100%;
+    height: 10px;
+    background: transparent;
+    padding: 0 5px;
+}
+
 
 /*---------------------------------------------*/
+
+.focus-input2 {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
 
 .focus-input3 {
     position: absolute;
@@ -522,6 +544,107 @@ iframe {
     -moz-transition: all 0.4s;
     transition: all 0.4s;
 }
+
+
+/*################################################
+[REV A]*/
+
+.login3-form-reva-bgbtn3 {
+    position: absolute;
+    z-index: -1;
+    width: 300%;
+    height: 100%;
+    background: #a64bf4;
+    background: -webkit-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    background: -o-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    background: -moz-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    background: linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    top: 0;
+    right: -100%;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.home3-form-reva-bgbtn {
+    position: absolute;
+    z-index: -1;
+    width: 300%;
+    height: 100%;
+    background: #a64bf4;
+    background: -webkit-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    background: -o-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    background: -moz-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    background: linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+    top: 0;
+    right: -100%;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.home3-form-reva-btn3 {
+    font-family: Poppins-Medium;
+    font-size: 20px;
+    color: #fff;
+    line-height: 1.2;
+    text-transform: uppercase;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+    height: 50px;
+}
+
+.home3-form-reva-btn3 active {
+    font-family: Poppins-Medium;
+    font-size: 20px;
+    color: #000;
+    line-height: 1.2;
+    text-transform: uppercase;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+    height: 50px;
+}
+
+.wrap-home3-form-reva-btn3:hover .home3-form-bgbtn {
+    right: 0;
+}
+
+.wrap-home3-form-reva-btn3:hover .home3-form-reva-bgbtn {
+    right: 0px;
+}
+
+.home3-form-reva-bgbtn:hover {
+    right: 0;
+}
+
+.wrap-home3-form-reva-btn3 {
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+
+/*#################################################
+*/
 
 .login3-form-rev-bgbtn3 {
     position: absolute;
@@ -864,6 +987,24 @@ iframe {
     height: 50px;
 }
 
+.home3-form-btn3.button-check.active {
+    font-family: Poppins-Medium;
+    font-size: 20px;
+    color: #000 !important;
+    line-height: 1.2;
+    text-transform: uppercase;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+    height: 50px;
+}
+
 .home3-form-rev-btn3 {
     font-family: Poppins-Medium;
     font-size: 20px;
@@ -909,6 +1050,7 @@ iframe {
 }
 
 .alert-validate::before {
+    z-index: 7;
     content: attr(data-validate);
     position: absolute;
     max-width: 70%;
