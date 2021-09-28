@@ -987,6 +987,28 @@ iframe {
     height: 50px;
 }
 
+.btn.active {
+    color: #000 !important;
+}
+
+.home3-form-btn3.active {
+    font-family: Poppins-Medium;
+    font-size: 20px;
+    color: #000 !important;
+    line-height: 1.2;
+    text-transform: uppercase;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+    height: 50px;
+}
+
 .home3-form-btn3.button-check.active {
     font-family: Poppins-Medium;
     font-size: 20px;

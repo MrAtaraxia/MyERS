@@ -61,7 +61,7 @@
                         <div class="wrap-home2-fform-btn ">
                             <div class="home3-form-bgbtn">
                             </div>
-                            <button type="button" class="btn home3-form-btn3" onclick="showResolved()">Resolved</button>
+                            <button type="button" id="resolved-button" class="btn home3-form-btn3" onclick="showResolved()">Resolved</button>
                         </div>
 
                     </div>
@@ -69,7 +69,7 @@
                         <div class="wrap-home2-form-btn ">
                             <div class="home3-form-rev-bgbtn">
                             </div>
-                            <button type="button" class="btn home3-form-rev-btn3" onclick="fetchBoth()">Update</button>
+                            <button type="button" id="fetch-button" class="btn home3-form-rev-btn3" onclick="fetchBoth()">Update</button>
                         </div>
                     </div>
 
@@ -77,7 +77,7 @@
                         <div class="wrap-home2-form-btn ">
                             <div class="home3-form-bgbtn">
                             </div>
-                            <button type="button" class="btn home3-form-btn3" onclick="showPending()">Pending</button>
+                            <button type="button" id="pending-button" class="btn home3-form-btn3" onclick="showPending()">Pending</button>
                         </div>
                     </div>
                 </div>
@@ -181,21 +181,36 @@
 
         function showPending() {
             toggleEles();
+            $("#pending-button").addClass("active");
+            $("#fetch-button").removeClass("active");
+            $("#resolved-button").removeClass("active");
             document.getElementById("Pending").style.display = "block";
             document.getElementById("Resolved").style.display = "none";
+            let rButton = document.getElementById("resolved-button");
+            rButton.classList.remove("active");
+            let pButton = document.getElementById("pending-button");
+            pButton.classList.add("active");
         }
 
         function showResolved() {
             toggleEles();
-            document.getElementById("Pending").style.display = "none";
-            document.getElementById("Resolved").style.display = "block";
-
+            $("#pending-button").removeClass("active");
+            $("#fetch-button").removeClass("active");
+            $("#resolved-button").addClass("active");
+            let pending = document.getElementById("Pending");
+            pending.style.display = "none";
+            let resolved = document.getElementById("Resolved");
+            resolved.style.display = "block";
+            let pButton = document.getElementById("pending-button");
+            pButton.classList.remove("active");
+            let rButton = document.getElementById("resolved-button");
+            rButton.classList.add("active");
         }
 
 
         function fetchResolved() {
             $.ajax({
-                url: "GetReimbursments",
+                url: "GetReimbursements",
                 //type: 'GET',
                 type: "POST",
                 data: {
@@ -310,7 +325,7 @@
 
         function fetchPending() {
             $.ajax({
-                url: "GetReimbursments",
+                url: "GetReimbursements",
                 //type: 'GET',
                 type: "POST",
                 data: {

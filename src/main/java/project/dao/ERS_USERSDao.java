@@ -107,7 +107,7 @@ public class ERS_USERSDao {
 	/*
 	 * INSERT
 	 */
-	public void insert(ERS_USERS euser) {
+	public Boolean insert(ERS_USERS euser) {
 		//First we need to open up a session
 		Session ses = HibernateUtil.getSession();
 		//Then we must start a transaction
@@ -118,9 +118,11 @@ public class ERS_USERSDao {
 		try {
 			tx.commit();
 			version++;
+			return true;
 		}
 		catch (Exception e) {
 			e.getStackTrace();
+			return false;
 		}
 		//Close the session once you are done
 		//ses.close();
@@ -129,32 +131,36 @@ public class ERS_USERSDao {
 	/*
 	 * UPDATE
 	 */
-	public void update(ERS_USERS euser) {
+	public Boolean update(ERS_USERS euser) {
 		Session ses = HibernateUtil.getSession();
 		Transaction tx = ses.beginTransaction();
 		ses.update(euser);
 		try {
 			tx.commit();
 			version++;
+			return true;
 		}
 		catch (Exception e) {
 			e.getStackTrace();
+			return false;
 		}
 	}
 	
 	/*
 	 * DELETE
 	 */
-	public void delete(ERS_USERS euser) {
+	public Boolean delete(ERS_USERS euser) {
 		Session ses = HibernateUtil.getSession();
 		Transaction tx = ses.beginTransaction();
 		ses.delete(euser);
 		try {
 			tx.commit();
 			version++;
+			return true;
 		}
 		catch (Exception e) {
 			e.getStackTrace();
+			return false;
 		}
 	}
 	

@@ -7,6 +7,9 @@ import javax.persistence.criteria.CriteriaBuilder;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.annotations.NamedQuery;
+import org.hibernate.query.Query;
+
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
@@ -48,8 +51,49 @@ public class ERS_REIMBURSEMENTDao {
 	/*
 	 * SELECT REIMBURSEMENT by Reimbursement Author ID
 	 */
-	public ERS_REIMBURSEMENT selectByAuthorID(int REIMB_AUTHOR_ID) {
-		//Creates complex queries programatically, it does with OOP principles
+	/*
+	 * 	        @NamedQuery(
+	        name = "viewAllReimbursments", 
+	        query = "FROM ERS_REIMBURSEMENT s"),
+	        @NamedQuery(
+	        name = "findReimbursmentByID",
+	        query = "FROM ERS_REIMBURSEMENT s WHERE s.id = :id"),
+	        @NamedQuery(
+	        name = "findReimbursmentsByAuthorID", 
+	        query = "FROM ERS_REIMBURSEMENT s WHERE s.REIMB_AUTHOR_ID = :REIMB_AUTHOR"),
+	        @NamedQuery(
+	        name = "findReimbursmentsByStatusID", 
+	        query = "FROM ERS_REIMBURSEMENT s WHERE s.REIMB_STATUS = :REIMB_STATUS"),
+	        @NamedQuery(
+	        name = "findReimbursmentsByTypeID", 
+	        query = "FROM ERS_REIMBURSEMENT s WHERE s.REIMB_TYPE = :REIMB_TYPE"),
+	    }
+	 */
+	@SuppressWarnings("unchecked")
+	public List<ERS_REIMBURSEMENT> selectByStatusQuery(REIMBURSEMENT_STATUS REIMB_STATUS) {
+		Session ses = HibernateUtil.getSession();
+		 Query<ERS_REIMBURSEMENT> query = ses.getNamedQuery("findReimbursmentsByStatusID")
+				.setParameter("REIMB_STATUS", REIMB_STATUS);
+		return query.list();	
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<ERS_REIMBURSEMENT> selectByStatusAndIDQuery(REIMBURSEMENT_STATUS REIMB_STATUS, Integer AuthorID) {
+		Session ses = HibernateUtil.getSession();
+		 Query<ERS_REIMBURSEMENT> query = ses.getNamedQuery("findReimbursmentsByStatusIDAuthorID")
+				.setParameter("REIMB_STATUS", REIMB_STATUS).setParameter("REIMB_AUTHOR", AuthorID);
+		return query.list();	
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<ERS_REIMBURSEMENT> selectByAuthorIDQuery(Integer AuthorID) {
+		Session ses = HibernateUtil.getSession();
+		Query<ERS_REIMBURSEMENT> query = ses.getNamedQuery("findReimbursmentsByStatusID")
+				.setParameter("REIMB_AUTHOR", AuthorID);
+		return query.list();	
+	}
+	
+	public List<ERS_REIMBURSEMENT> selectByAuthorID(int REIMB_AUTHOR_ID) {
 		Session ses = HibernateUtil.getSession();
 		CriteriaBuilder qb = ses.getCriteriaBuilder();
 		CriteriaQuery<ERS_REIMBURSEMENT> q = qb.createQuery(ERS_REIMBURSEMENT.class);
@@ -64,7 +108,7 @@ public class ERS_REIMBURSEMENTDao {
 	    //execute query and do something with result
 		List<ERS_REIMBURSEMENT> usersList = ses.createQuery(q).getResultList();
 		System.out.println(usersList);
-		return usersList.get(0);
+		return usersList;
 	}
 	/*
 	 * SELECT REIMBURSEMENT by Reimbursement Status ID
@@ -113,7 +157,7 @@ public class ERS_REIMBURSEMENTDao {
 	/*
 	 * INSERT REIMBURSEMENT
 	 */
-	public void insert(ERS_REIMBURSEMENT euser) {
+	public Boolean insert(ERS_REIMBURSEMENT euser) {
 		//First we need to open up a session
 		Session ses = HibernateUtil.getSession();
 		//Then we must start a transaction
@@ -124,45 +168,47 @@ public class ERS_REIMBURSEMENTDao {
 		try {
 			tx.commit();
 			version++;
+			return true;
 		}
 		catch (Exception e) {
 			e.getStackTrace();
+			return false;
 		}
-		//Close the session once you are done
-		//ses.close();
 	}
 	
 	/*
 	 * UPDATE REIMBURSEMENT
 	 */
-	public void update(ERS_REIMBURSEMENT euser) {
+	public Boolean update(ERS_REIMBURSEMENT euser) {
 		Session ses = HibernateUtil.getSession();
 		Transaction tx = ses.beginTransaction();
 		ses.update(euser);
 		try {
 			tx.commit();
 			version++;
+			return true;
 		}
 		catch (Exception e) {
 			e.getStackTrace();
+			return false;
 		}
 	}
 	
 	/*
 	 * DELETE REIMBURSEMENT
 	 */
-	public void delete(ERS_REIMBURSEMENT euser) {
+	public Boolean delete(ERS_REIMBURSEMENT euser) {
 		Session ses = HibernateUtil.getSession();
 		Transaction tx = ses.beginTransaction();
 		ses.delete(euser);
 		try {
 			tx.commit();
 			version++;
+			return true;
 		}
 		catch (Exception e) {
 			e.getStackTrace();
+			return false;
 		}
 	}
-	
-	
 }

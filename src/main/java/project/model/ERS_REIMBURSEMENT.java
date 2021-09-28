@@ -33,6 +33,9 @@ import org.hibernate.annotations.*;
 	        name = "findReimbursmentByID",
 	        query = "FROM ERS_REIMBURSEMENT s WHERE s.id = :id"),
 	        @NamedQuery(
+	        name = "findReimbursmentsByStatusIDAuthorID", 
+	        query = "FROM ERS_REIMBURSEMENT s WHERE s.REIMB_STATUS = :REIMB_STATUS and s.REIMB_AUTHOR_ID = :REIMB_AUTHOR"),
+	        @NamedQuery(
 	        name = "findReimbursmentsByAuthorID", 
 	        query = "FROM ERS_REIMBURSEMENT s WHERE s.REIMB_AUTHOR_ID = :REIMB_AUTHOR"),
 	        @NamedQuery(

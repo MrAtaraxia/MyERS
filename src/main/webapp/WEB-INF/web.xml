@@ -50,7 +50,7 @@ version="4.0">
   <servlet>
     <display-name>ErrorHandlerServlet</display-name>
     <servlet-name>ErrorHandlerServlet</servlet-name>
-    <servlet-class>project.ErrorHandlerServlet</servlet-class>
+    <servlet-class>project.Errors.ErrorHandlerServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ErrorHandlerServlet</servlet-name>
@@ -96,17 +96,17 @@ version="4.0">
     <url-pattern>/GetJSON</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
-    <display-name>GetReimbursments</display-name>
-    <servlet-name>GetReimbursments</servlet-name>
-    <servlet-class>project.GetReimbursments</servlet-class>
+    <description>How to get Reimbursements</description>
+    <display-name>GetReimbursements</display-name>
+    <servlet-name>GetReimbursements</servlet-name>
+    <servlet-class>project.GetReimbursements</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>GetReimbursments</servlet-name>
-    <url-pattern>/GetReimbursments</url-pattern>
+    <servlet-name>GetReimbursements</servlet-name>
+    <url-pattern>/GetReimbursements</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
+    <description>How to get Users</description>
     <display-name>GetUsers</display-name>
     <servlet-name>GetUsers</servlet-name>
     <servlet-class>project.GetUsers</servlet-class>
